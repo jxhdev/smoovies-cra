@@ -9,31 +9,10 @@ import Details from './Details';
 import preload from './data.json';
 import './style.css';
 
-const FourOhFour = () => <h1>404</h1>;
 const App = () => (
-  <BrowserRouter>
-    <div className="app">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route
-          path="/search"
-          component={props => <Search shows={preload.shows} {...props} />}
-        />
-        <Route
-          path="/details/:id"
-          component={(props: { match: Match }) => (
-            <Details
-              show={preload.shows.find(
-                show => props.match.params.id === show.imdbID
-              )}
-              {...props}
-            />
-          )}
-        />
-        <Route component={FourOhFour} />
-      </Switch>
-    </div>
-  </BrowserRouter>
+  <div className="app">
+    <Search shows={preload.shows} />
+  </div>
 );
 
 export default App;

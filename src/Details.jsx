@@ -1,20 +1,7 @@
-// @flow
-
 import React, { Component } from 'react';
 import Header from './Header';
 
-type Props = {
-  show: {
-    title: string,
-    year: string,
-    poster: string,
-    description: string,
-    trailer: string
-  }
-};
-class Details extends Component<Props, null> {
-  componentDidMount() {}
-  props: Props;
+class Details extends Component {
   render() {
     const { title, year, poster, description, trailer } = this.props.show;
     return (

@@ -1,24 +1,14 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import ShowCard from './ShowCard';
 import Header from './Header';
 
-type State = {
-  searchTerm: string
-};
-
-type Props = {
-  shows: Array<Show>
-};
-class Search extends React.Component<Props, State> {
+class Search extends Component {
   state = {
     searchTerm: ''
   };
-  props: Props;
-  handleSearchTermChange = (
-    event: SyntheticKeyboardEvent<HTMLInputElement>
-  ) => {
+  handleSearchTermChange = event => {
     this.setState({ searchTerm: event.currentTarget.value });
   };
 
@@ -38,7 +28,9 @@ class Search extends React.Component<Props, State> {
                   .toUpperCase()
                   .indexOf(this.state.searchTerm.toUpperCase()) >= 0
             )
-            .map(show => <ShowCard key={show.imdbID} {...show} />)}
+            .map(show => (
+              <ShowCard key={show.imdbID} {...show} />
+            ))}
         </div>
       </div>
     );
